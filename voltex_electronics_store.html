@@ -1,0 +1,290 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:#F7F7F5;color:#0A0A0A;font-size:15px}
+  a{text-decoration:none;color:inherit}
+  button{cursor:pointer;font-family:'Inter',sans-serif}
+
+  /* HEADER */
+  .hdr{position:sticky;top:0;z-index:100;background:rgba(247,247,245,0.92);backdrop-filter:blur(12px);border-bottom:0.5px solid #E0E0DC;padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .hdr-logo{font-size:18px;font-weight:700;letter-spacing:-0.5px}
+  .hdr-logo span{color:#2563EB}
+  .hdr-nav{display:flex;gap:2rem}
+  .hdr-nav a{font-size:13px;color:#555;font-weight:400;transition:color .15s}
+  .hdr-nav a:hover{color:#0A0A0A}
+  .hdr-right{display:flex;align-items:center;gap:1rem}
+  .cart-btn{display:flex;align-items:center;gap:6px;background:#0A0A0A;color:#fff;border:none;padding:7px 14px;border-radius:20px;font-size:13px;font-weight:500;transition:background .15s}
+  .cart-btn:hover{background:#2563EB}
+  .cart-count{background:#2563EB;color:#fff;border-radius:50%;width:18px;height:18px;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .search-bar{display:flex;align-items:center;gap:8px;background:#fff;border:0.5px solid #E0E0DC;border-radius:20px;padding:6px 12px;font-size:13px}
+  .search-bar input{border:none;outline:none;background:transparent;font-family:'Inter',sans-serif;font-size:13px;width:160px;color:#0A0A0A}
+  .search-bar input::placeholder{color:#999}
+
+  /* HERO */
+  .hero{padding:5rem 2rem 4rem;max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+  .hero-tag{font-size:11px;font-weight:600;letter-spacing:1.5px;color:#2563EB;text-transform:uppercase;margin-bottom:1rem}
+  .hero h1{font-size:clamp(2.4rem,5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-2px;color:#0A0A0A;margin-bottom:1.25rem}
+  .hero h1 em{font-style:normal;color:#2563EB}
+  .hero-sub{font-size:15px;color:#666;line-height:1.65;margin-bottom:2rem;max-width:380px}
+  .hero-cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .btn-primary{background:#0A0A0A;color:#fff;border:none;padding:12px 24px;border-radius:24px;font-size:14px;font-weight:500;transition:background .15s}
+  .btn-primary:hover{background:#2563EB}
+  .btn-ghost{background:transparent;color:#0A0A0A;border:0.5px solid #C0C0BC;padding:12px 24px;border-radius:24px;font-size:14px;font-weight:400;transition:all .15s}
+  .btn-ghost:hover{border-color:#0A0A0A}
+  .hero-visual{background:#fff;border:0.5px solid #E0E0DC;border-radius:20px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;position:relative;overflow:hidden}
+  .hero-product-img{font-size:7rem;line-height:1}
+  .hero-badge{position:absolute;top:18px;right:18px;background:#EFF6FF;color:#2563EB;font-size:11px;font-weight:600;padding:4px 10px;border-radius:12px}
+  .hero-price{font-size:22px;font-weight:600;letter-spacing:-0.5px}
+  .hero-price span{font-size:14px;color:#888;font-weight:400;text-decoration:line-through;margin-left:6px}
+
+  /* STATS BAR */
+  .stats{border-top:0.5px solid #E0E0DC;border-bottom:0.5px solid #E0E0DC;padding:1.25rem 2rem;display:flex;justify-content:center;gap:4rem;background:#fff}
+  .stat{text-align:center}
+  .stat-num{font-size:20px;font-weight:700;letter-spacing:-0.5px}
+  .stat-label{font-size:12px;color:#888;margin-top:2px}
+
+  /* SECTION */
+  .section{max-width:1100px;margin:0 auto;padding:3.5rem 2rem}
+  .sec-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2rem}
+  .sec-head h2{font-size:22px;font-weight:700;letter-spacing:-0.5px}
+  .sec-head a{font-size:13px;color:#2563EB}
+
+  /* FILTERS */
+  .filters{display:flex;gap:8px;margin-bottom:2rem;flex-wrap:wrap}
+  .filter-btn{background:#fff;border:0.5px solid #E0E0DC;padding:6px 16px;border-radius:16px;font-size:12px;font-weight:500;color:#555;cursor:pointer;transition:all .15s}
+  .filter-btn.active,.filter-btn:hover{background:#0A0A0A;color:#fff;border-color:#0A0A0A}
+
+  /* PRODUCT GRID */
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1.25rem}
+  .card{background:#fff;border:0.5px solid #E0E0DC;border-radius:16px;overflow:hidden;transition:border-color .15s,transform .15s;cursor:pointer}
+  .card:hover{border-color:#B0B0AC;transform:translateY(-2px)}
+  .card-img{background:#F7F7F5;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative}
+  .card-badge{position:absolute;top:10px;left:10px;font-size:10px;font-weight:600;padding:3px 8px;border-radius:8px}
+  .badge-new{background:#EFF6FF;color:#2563EB}
+  .badge-sale{background:#FEF2F2;color:#DC2626}
+  .badge-hot{background:#FFF7ED;color:#EA580C}
+  .card-body{padding:14px}
+  .card-brand{font-size:11px;color:#999;font-weight:500;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:4px}
+  .card-name{font-size:14px;font-weight:600;margin-bottom:6px;line-height:1.35}
+  .card-rating{display:flex;align-items:center;gap:4px;margin-bottom:10px}
+  .stars{color:#F59E0B;font-size:12px;letter-spacing:1px}
+  .rating-count{font-size:11px;color:#999}
+  .card-footer{display:flex;align-items:center;justify-content:space-between}
+  .card-price{font-size:16px;font-weight:700;letter-spacing:-0.3px}
+  .card-old{font-size:12px;color:#999;text-decoration:line-through;margin-left:5px;font-weight:400}
+  .add-btn{background:#0A0A0A;color:#fff;border:none;width:32px;height:32px;border-radius:50%;font-size:18px;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s;flex-shrink:0}
+  .add-btn:hover{background:#2563EB}
+
+  /* CATEGORIES */
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem}
+  .cat-card{background:#fff;border:0.5px solid #E0E0DC;border-radius:14px;padding:1.25rem 1rem;text-align:center;cursor:pointer;transition:all .15s}
+  .cat-card:hover{border-color:#0A0A0A;background:#F7F7F5}
+  .cat-icon{font-size:2rem;margin-bottom:8px}
+  .cat-name{font-size:13px;font-weight:500}
+  .cat-count{font-size:11px;color:#999;margin-top:2px}
+
+  /* PROMO BANNER */
+  .promo{margin:0 2rem;max-width:1060px;margin-left:auto;margin-right:auto;background:#0A0A0A;border-radius:20px;padding:3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+  .promo-text h3{font-size:26px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-bottom:8px}
+  .promo-text p{color:#aaa;font-size:14px;max-width:360px;line-height:1.6}
+  .promo-code{background:#1a1a1a;border:0.5px solid #333;border-radius:12px;padding:10px 20px;color:#fff;font-size:13px;margin-top:1.25rem;display:inline-flex;align-items:center;gap:10px}
+  .promo-code strong{color:#2563EB;font-size:16px;letter-spacing:1px}
+  .promo-btn{background:#2563EB;color:#fff;border:none;padding:12px 28px;border-radius:24px;font-size:14px;font-weight:600;white-space:nowrap;transition:opacity .15s}
+  .promo-btn:hover{opacity:.85}
+
+  /* TOAST */
+  .toast{position:fixed;bottom:24px;right:24px;background:#0A0A0A;color:#fff;padding:12px 18px;border-radius:12px;font-size:13px;font-weight:500;transform:translateY(80px);opacity:0;transition:all .3s;z-index:999;display:flex;align-items:center;gap:8px}
+  .toast.show{transform:translateY(0);opacity:1}
+  .toast-dot{width:8px;height:8px;background:#22C55E;border-radius:50%;flex-shrink:0}
+
+  /* FOOTER */
+  .footer{border-top:0.5px solid #E0E0DC;margin-top:4rem;padding:2.5rem 2rem;background:#fff}
+  .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
+  .footer-logo{font-size:16px;font-weight:700;letter-spacing:-0.5px}
+  .footer-logo span{color:#2563EB}
+  .footer-links{display:flex;gap:1.5rem}
+  .footer-links a{font-size:12px;color:#888;transition:color .15s}
+  .footer-links a:hover{color:#0A0A0A}
+  .footer-copy{font-size:12px;color:#bbb}
+
+  @media(max-width:700px){
+    .hero{grid-template-columns:1fr;padding:3rem 1.25rem 2rem}
+    .hero-visual{display:none}
+    .hdr-nav{display:none}
+    .stats{gap:2rem;padding:1rem 1.25rem}
+    .section{padding:2.5rem 1.25rem}
+    .promo{padding:2rem 1.25rem;margin:0 1.25rem}
+  }
+</style>
+
+<h2 class="sr-only" style="position:absolute;left:-9999px">Voltex — Electronics & Tech Store</h2>
+
+<div id="toast" class="toast"><span class="toast-dot"></span><span id="toast-msg">Added to cart</span></div>
+
+<!-- HEADER -->
+<header class="hdr">
+  <div class="hdr-logo">volt<span>ex</span></div>
+  <nav class="hdr-nav">
+    <a href="#">New Arrivals</a>
+    <a href="#">Phones</a>
+    <a href="#">Audio</a>
+    <a href="#">Laptops</a>
+    <a href="#">Accessories</a>
+  </nav>
+  <div class="hdr-right">
+    <div class="search-bar"><i class="ti ti-search" aria-hidden="true" style="font-size:14px;color:#999"></i><input type="text" placeholder="Search products…" /></div>
+    <button class="cart-btn" onclick="openCart()"><i class="ti ti-shopping-bag" aria-hidden="true"></i> Cart <span class="cart-count" id="cart-count">0</span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <div class="hero-tag">New Drop — Summer 2026</div>
+    <h1>Tech that<br>feels <em>right.</em></h1>
+    <p class="hero-sub">Premium electronics, curated for the way you live. Free delivery on orders over ₹999. Easy 30-day returns.</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="scrollToProducts()">Shop Now</button>
+      <button class="btn-ghost" onclick="sendPrompt('What are the best-selling products on Voltex?')">View Bestsellers ↗</button>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-badge">NEW IN</div>
+    <div class="hero-product-img">🎧</div>
+    <div class="hero-price">₹8,499 <span>₹12,999</span></div>
+    <div style="font-size:12px;color:#888">Sony WH-1000XM5</div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">12K+</div><div class="stat-label">Products</div></div>
+  <div class="stat"><div class="stat-num">4.8★</div><div class="stat-label">Avg rating</div></div>
+  <div class="stat"><div class="stat-num">2-day</div><div class="stat-label">Delivery</div></div>
+  <div class="stat"><div class="stat-num">500K+</div><div class="stat-label">Customers</div></div>
+</div>
+
+<!-- CATEGORIES -->
+<div class="section">
+  <div class="sec-head"><h2>Browse by category</h2></div>
+  <div class="cat-grid">
+    <div class="cat-card"><div class="cat-icon">📱</div><div class="cat-name">Phones</div><div class="cat-count">340 products</div></div>
+    <div class="cat-card"><div class="cat-icon">🎧</div><div class="cat-name">Audio</div><div class="cat-count">218 products</div></div>
+    <div class="cat-card"><div class="cat-icon">💻</div><div class="cat-name">Laptops</div><div class="cat-count">175 products</div></div>
+    <div class="cat-card"><div class="cat-icon">⌚</div><div class="cat-name">Wearables</div><div class="cat-count">122 products</div></div>
+    <div class="cat-card"><div class="cat-icon">📷</div><div class="cat-name">Cameras</div><div class="cat-count">89 products</div></div>
+    <div class="cat-card"><div class="cat-icon">🎮</div><div class="cat-name">Gaming</div><div class="cat-count">264 products</div></div>
+    <div class="cat-card"><div class="cat-icon">🖥️</div><div class="cat-name">Monitors</div><div class="cat-count">96 products</div></div>
+    <div class="cat-card"><div class="cat-icon">🔌</div><div class="cat-name">Accessories</div><div class="cat-count">430 products</div></div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="section" id="products-section">
+  <div class="sec-head"><h2>Featured products</h2><a href="#" onclick="sendPrompt('Show me all products on Voltex')">View all →</a></div>
+  <div class="filters" id="filters">
+    <button class="filter-btn active" onclick="filterProducts(this,'all')">All</button>
+    <button class="filter-btn" onclick="filterProducts(this,'phones')">Phones</button>
+    <button class="filter-btn" onclick="filterProducts(this,'audio')">Audio</button>
+    <button class="filter-btn" onclick="filterProducts(this,'laptops')">Laptops</button>
+    <button class="filter-btn" onclick="filterProducts(this,'wearables')">Wearables</button>
+    <button class="filter-btn" onclick="filterProducts(this,'gaming')">Gaming</button>
+  </div>
+  <div class="grid" id="product-grid"></div>
+</div>
+
+<!-- PROMO BANNER -->
+<div class="promo">
+  <div class="promo-text">
+    <h3>Get 15% off your first order.</h3>
+    <p>Sign up and unlock exclusive member pricing, early access to drops, and priority support.</p>
+    <div class="promo-code">Use code <strong>VOLTEX15</strong> at checkout</div>
+  </div>
+  <button class="promo-btn" onclick="sendPrompt('How do I sign up for Voltex membership?')">Claim Offer ↗</button>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">volt<span>ex</span></div>
+    <nav class="footer-links">
+      <a href="#">About</a><a href="#">Shipping</a><a href="#">Returns</a><a href="#">Support</a><a href="#">Privacy</a>
+    </nav>
+    <div class="footer-copy">© 2026 Voltex Electronics</div>
+  </div>
+</footer>
+
+<script>
+const products=[
+  {id:1,name:"iPhone 15 Pro",brand:"Apple",emoji:"📱",price:119999,old:134999,rating:4.9,reviews:2841,badge:"new",cat:"phones"},
+  {id:2,name:"Galaxy S24 Ultra",brand:"Samsung",emoji:"📱",price:109999,old:124999,rating:4.8,reviews:1932,badge:"hot",cat:"phones"},
+  {id:3,name:"WH-1000XM5",brand:"Sony",emoji:"🎧",price:24999,old:32999,rating:4.9,reviews:5621,badge:"sale",cat:"audio"},
+  {id:4,name:"AirPods Pro 2",brand:"Apple",emoji:"🎧",price:21499,old:26900,rating:4.8,reviews:4123,badge:"",cat:"audio"},
+  {id:5,name:"MacBook Air M3",brand:"Apple",emoji:"💻",price:114999,old:129999,rating:4.9,reviews:987,badge:"new",cat:"laptops"},
+  {id:6,name:"Dell XPS 15",brand:"Dell",emoji:"💻",price:135000,old:149999,rating:4.7,reviews:672,badge:"",cat:"laptops"},
+  {id:7,name:"Galaxy Watch 6",brand:"Samsung",emoji:"⌚",price:26999,old:33999,rating:4.7,reviews:1120,badge:"sale",cat:"wearables"},
+  {id:8,name:"Apple Watch S9",brand:"Apple",emoji:"⌚",price:39999,old:45900,rating:4.8,reviews:2231,badge:"hot",cat:"wearables"},
+  {id:9,name:"PS5 DualSense",brand:"Sony",emoji:"🎮",price:6999,old:7999,rating:4.8,reviews:8342,badge:"",cat:"gaming"},
+  {id:10,name:"ROG Ally X",brand:"ASUS",emoji:"🎮",price:79999,old:94999,rating:4.6,reviews:421,badge:"new",cat:"gaming"},
+  {id:11,name:"Pixel 8 Pro",brand:"Google",emoji:"📱",price:84999,old:99999,rating:4.7,reviews:1543,badge:"",cat:"phones"},
+  {id:12,name:"Bose 700",brand:"Bose",emoji:"🎧",price:27990,old:34000,rating:4.6,reviews:2100,badge:"sale",cat:"audio"},
+];
+
+let cart=0;
+let currentFilter='all';
+
+function renderProducts(filter){
+  const grid=document.getElementById('product-grid');
+  const filtered=filter==='all'?products:products.filter(p=>p.cat===filter);
+  grid.innerHTML=filtered.map(p=>`
+    <div class="card">
+      <div class="card-img">
+        <span style="font-size:3.5rem">${p.emoji}</span>
+        ${p.badge?`<span class="card-badge badge-${p.badge}">${p.badge.toUpperCase()}</span>`:''}
+      </div>
+      <div class="card-body">
+        <div class="card-brand">${p.brand}</div>
+        <div class="card-name">${p.name}</div>
+        <div class="card-rating">
+          <span class="stars">${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))}</span>
+          <span class="rating-count">(${p.reviews.toLocaleString()})</span>
+        </div>
+        <div class="card-footer">
+          <div>
+            <span class="card-price">₹${p.price.toLocaleString('en-IN')}</span>
+            ${p.old?`<span class="card-old">₹${p.old.toLocaleString('en-IN')}</span>`:''}
+          </div>
+          <button class="add-btn" onclick="addToCart('${p.name}')" aria-label="Add ${p.name} to cart">+</button>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterProducts(btn,cat){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentFilter=cat;
+  renderProducts(cat);
+}
+
+function addToCart(name){
+  cart++;
+  document.getElementById('cart-count').textContent=cart;
+  document.getElementById('toast-msg').textContent=name+' added to cart';
+  const t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2500);
+}
+
+function openCart(){
+  sendPrompt('Show me my cart with '+cart+' item(s) on Voltex');
+}
+
+function scrollToProducts(){
+  document.getElementById('products-section').scrollIntoView({behavior:'smooth'});
+}
+
+renderProducts('all');
+</script>
